@@ -6,14 +6,14 @@ order by 3,4
 --from Portfolio_Project..CovidVaccinations
 --order by 3,4
 
--- Select Data that we are going to be using
+-- Selecting the Data that we are going to use
 
 Select location, date, total_cases, new_cases, total_deaths, population
 from Portfolio_Project..CovidDeaths
 order by 1, 2
 
 -- Looking at Total Cases vs Total Deaths
--- Shows the likelihood of dying if you contract COVID in my Country
+-- Showing the likelihood of dying if you contract COVID in India
 
 Select location, date, total_cases, total_deaths, (total_deaths/total_cases)*100 as Death_Percentage
 from Portfolio_Project..CovidDeaths
@@ -21,7 +21,7 @@ where location like 'India'
 order by 1, 2
 
 -- Looking at Total Cases vs Population
--- Shows what percentage of population got COVID
+-- Showing what percentage of population got COVID in India
 
 Select location, date, population, total_cases, (total_cases/population)*100 as Infected_Percentage
 from Portfolio_Project..CovidDeaths
@@ -121,7 +121,7 @@ join Portfolio_Project..CovidVaccinations vac
   on dea.location = vac.location
   and dea.date = vac.date
 -- where dea.continent is not null
---order by 2, 3
+-- order by 2, 3
 
 Select *, (RollingPeopleVaccinated/population)*100
 from #PercentPopeulationVaccinated
